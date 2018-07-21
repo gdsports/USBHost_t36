@@ -710,7 +710,7 @@ public:
 	void     attachPressRaw(void (*f)(uint8_t oem_key, uint8_t mod)) { keyPressedRawFunction = f; }
 	void     attachReleaseRaw(void (*f)(uint8_t oem_key, uint8_t mod)) { keyReleasedRawFunction = f; }
 	void     attachModifiersChange(void (*f) (uint8_t modifierState)) {modifiersChangedFunction = f; }
-	void     attachReportReader(void (*f)(const uint8_t report[8])) {reportReaderFunction = f; }
+	void     attachReportReader(void (*f)(uint8_t report[8])) {reportReaderFunction = f; }
 	void     LEDS(uint8_t leds);
 	uint8_t  LEDS() {return leds_.byte;}
 	void     updateLEDS(void);
@@ -752,7 +752,7 @@ private:
 	void (*keyPressedRawFunction)(uint8_t oem_key, uint8_t mod);
 	void (*keyReleasedRawFunction)(uint8_t oem_key, uint8_t mod);
 	void (*modifiersChangedFunction)(uint8_t modifierState);
-	void (*reportReaderFunction)(const uint8_t report[8]);
+	void (*reportReaderFunction)(uint8_t report[8]);
 	Pipe_t *datapipe;
 	setup_t setup;
 	uint8_t report[8];
